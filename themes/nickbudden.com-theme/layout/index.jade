@@ -1,0 +1,25 @@
+extends _includes/layout
+
+block head_title
+  title
+    if config.subtitle
+      = config.title + ' | ' + config.subtitle
+    else
+      = config.title
+
+block head_descriptions
+  if config.description
+    meta(name='description', content=config.description)
+
+block main
+
+  if is_post() || !page.posts
+    include _includes/article.jade
+
+  else
+    - page.posts.each(function( post ) {
+        include _includes/article.jade
+    - });
+
+    include _includes/pagination
+

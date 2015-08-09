@@ -1,0 +1,646 @@
+/* -------------------------------------------------------------- */
+/* [ IMPORTS ] */
+/* -------------------------------------------------------------- */
+
+@import 'nib'
+@import '_mixins'
+@import '_highlight'
+
+/* -------------------------------------------------------------- */
+/* [ VARS ] */
+/* -------------------------------------------------------------- */
+
+$r = 3px
+$border_color = #D3D3D3
+
+/* -------------------------------------------------------------- */
+/* [ RESET ] */
+/* -------------------------------------------------------------- */
+
+global-reset()
+nested-reset()
+reset-box-model()
+reset-font()
+reset-body()
+reset-table()
+reset-table-cell()
+reset-html5()
+
+a
+  text-decoration none
+
+*
+  box-sizing border-box
+
+button
+input
+textarea
+  outline none
+
+button
+  cursor pointer
+
+/* -------------------------------------------------------------- */
+/* [ FONTS ] */
+/* -------------------------------------------------------------- */
+
+webfont('Quicksand', 'quicksand_bold', true, 'normal')
+webfont('PT Sans', 'pt-sans', true, 'normal')
+webfont('PT Sans Bold', 'pt-sans-bold', true, 'normal')
+
+/* -------------------------------------------------------------- */
+/* [ COMMON ] */
+/* -------------------------------------------------------------- */
+
+// Sticky Footer
+// https://css-tricks.com/snippets/css/sticky-footer/
+html
+body
+  height 100%
+
+body
+  font-family 'Pt Sans', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif
+  font-smoothing antialiased
+  background #F4F4F4
+  font-size 17px
+  line-height 180%
+  font-weight normal
+  color #464646
+
+  ::selection
+    background: #FDF8C5
+
+.wrapper
+  width 995px
+  margin 0 auto
+
+.outside_sticky_footer
+  min-height 100%
+  margin-bottom -90px // -footer height
+
+  &:after
+    content ' '
+    display block
+    height 90px // footer height
+
+.logo
+  display block
+  background url(../img/logo.png)
+  background-repeat no-repeat
+  background-position center left
+
+/* -------------------------------------------------------------- */
+/* [ MEDIA QUERIES ] */
+/* -------------------------------------------------------------- */
+
+@media screen and (max-width: 995px)
+  .wrapper
+    width 100%
+
+@media screen and (max-width: 870px)
+  main.wrapper .content > *
+    display block !important
+    width 100%
+
+    &.articles
+      padding-bottom 0
+
+    .about_me
+      position relative
+      padding 25px 0 25px 280px
+      margin-top -90px
+
+      &:before
+        position absolute
+        left 0
+        top 0
+        bottom 0
+        width 280px
+        border-width 0 3px 0 0
+        height auto
+
+@media screen and (max-width: 550px)
+  main.wrapper .content > * .about_me
+    padding 0
+
+    &:before
+      display none
+
+/* -------------------------------------------------------------- */
+/* [ TYPOGRAPHY + POST CONTENT ] */
+/* -------------------------------------------------------------- */
+
+h1
+h2
+h3
+h4
+  font-family 'Quicksand'
+  font-weight bold
+  line-height 1.25em
+
+h1
+  font-size 40px
+
+h2
+  font-size 30px
+h3
+  font-size 22px
+h4
+h5
+h6
+  font-size 17px
+
+p
+  a
+    color #82D145
+    border-bottom 1px dashed $border_color
+    transition all 0.3s ease-out
+
+    &:hover
+      border-bottom 1px solid #82D145
+
+.site_nav
+  ul
+  li
+  li a
+    height 65px
+
+  li
+    display inline-block
+
+    a
+      display block
+      opacity .4
+      color #fff
+      font-size 17px
+      text-transform uppercase
+      transition all 0.3s ease-out
+      font-family 'Quicksand'
+      font-weight bold
+
+    &:hover a
+    &.selected a
+      opacity 1
+
+.button
+  background #86CD56
+  color #fff
+  border-radius $r
+  font-family 'Quicksand'
+  font-weight bold
+  padding .5em 1em
+  transition all 0.3s ease-out
+
+  &:hover
+    padding .5em 1.25em
+
+/* -------------------------------------------------------------- */
+/* [ HEADER ] */
+/* -------------------------------------------------------------- */
+
+header
+  background url(../img/header.jpg)
+  background-repeat no-repeat
+  background-position center
+  background-size cover
+  width 100%
+  height 215px
+
+  .logo
+    width 290px
+    height 75px
+    margin-top 8px
+    float left
+
+  .wrapper
+    overflow hidden
+
+  .site_nav
+    li
+      a
+        border-bottom 3px solid rgba(255, 255, 255, 0.4)
+        padding 20px 15px
+
+      &:hover a
+      &.selected a
+        border-bottom-color #82d145
+        padding 20px
+
+.main_navigation
+  height 65px
+  box-shadow 0 1px 2px rgba(255, 255, 255, 0.15), inset 0 -1px 5px rgba(0, 0, 0, 0.3)
+  text-align right
+
+/* -------------------------------------------------------------- */
+/* [ CONTENT ] */
+/* -------------------------------------------------------------- */
+
+main.wrapper
+  background rgba(255, 255, 255, 0.2)
+  border-radius $r
+  box-shadow 0 0 3px rgba(0, 0, 0, 0.2) inset
+  padding 8px
+  margin-top -90px
+  margin-bottom 60px
+
+  .content
+    background #fff
+    border 1px solid $border_color
+    border-radius $r
+    display table
+    width 100%
+
+    // .articles, aside
+    > *
+      display table-cell
+      vertical-align top
+
+    .articles
+      padding 30px
+
+      article
+        margin-bottom 90px
+
+        &:not(:first-child)
+          position relative
+
+          &:before
+            content ' '
+            display block
+            position absolute
+            left -30px
+            right 0
+            top -43px
+            height 1px
+            background rgba($border_color, .5)
+
+          &:after
+            content ' '
+            display block
+            position absolute
+            left -30px
+            top -45px
+            height 5px
+            width 30px
+            background #84CF4E
+            border-radius 0 $r $r 0
+
+  .read_more
+    background none
+    border 2px solid #86CD56
+    color #66B92E
+    background rgba(#86CD56, .2)
+
+    &:hover
+      background #86CD56
+      color #fff
+
+/* -------------------------------------------------------------- */
+/* [ PAGINATION ] */
+/* -------------------------------------------------------------- */
+
+.pagination
+  border-top 1px dashed $border_color
+  padding-top 30px
+  margin-top 30px
+  text-align center
+  height 78px
+
+  &.hug_next
+    text-align right
+
+  &.hug_prev
+    text-align left
+
+  .page_num
+    display inline-block
+    font-family 'Quicksand'
+    font-weight bold
+    font-size 14px
+    color #6d6d6d
+    border-bottom 2px solid #86CD56
+    margin 5px 15px 0
+
+  .previous_page
+    float left
+
+  .next_page
+    float right
+
+/* -------------------------------------------------------------- */
+/* [ SIDEBAR ] */
+/* -------------------------------------------------------------- */
+
+aside
+  width 325px
+  padding 20px
+  font-family 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif
+
+  .tags a
+    float left
+    padding 0 10px
+    margin 0 10px 10px 0
+
+.about_me
+  background #F4F4F4
+  border-radius $r
+  border 1px solid $border_color
+  overflow hidden
+  color #888
+  text-align center
+
+  // About Me Picture
+  &:before
+    content ' '
+    display block
+    width 100%
+    height 175px
+    background url(../img/about_me.jpg)
+    background-repeat no-repeat
+    background-position center
+    background-size cover
+    border 3px solid rgba(130, 209, 69, 0.75)
+    border-width 0 0 3px 0
+
+  p
+    border-bottom 1px dashed $border_color
+    font-size 15px
+    line-height 22px
+    padding  15px 20px
+
+  .follow_me
+    padding 15px 0 5px
+    width 100%
+
+    a
+      display none
+
+.search form
+  margin 10px 0
+  // background #F4F4F4
+  // border 1px solid $border_color
+  // padding 5px
+  // border-radius $r
+
+  input
+    width 100%
+    display block
+    background none
+    border none
+    // border 1px solid $border_color
+    border-radius $r
+    padding 10px 0
+    background #fcfcfc
+
+/* -------------------------------------------------------------- */
+/* [ TAGS ] */
+/* -------------------------------------------------------------- */
+
+.tags
+  font-family 'Quicksand'
+  font-weight bold
+
+  li
+    display inline-block
+    margin-right 10px
+
+  a
+    border 1px solid $border_color
+    border-radius $r
+    padding 5px 10px
+    transition all 0.3s ease-out
+    font-size 14px
+    color #7B7B7B
+
+    &:hover
+      background #F4F4F4
+
+/* -------------------------------------------------------------- */
+/* [ POST ] */
+/* -------------------------------------------------------------- */
+
+.post_title
+  border-bottom 1px dashed $border_color
+  padding-bottom 30px
+  margin-bottom 30px
+  font-family 'Quicksand'
+  font-weight bold
+
+  .tags
+    margin 5px 0 -15px
+
+  h1 a
+    color #464646
+
+  .date
+    color #6D6D6D
+
+.post_content
+
+  > *
+    margin-bottom 30px
+
+  em
+    font-style italic
+    color #000
+
+  strong
+    font-weight bold
+    color #000
+
+  p code, table code
+    background #f4f4f4
+    border 1px solid $border_color
+    border-radius $r
+    padding 0 3px
+    font-family 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif
+    color #000
+
+  ul
+  ol
+    li
+      margin 0 0 7px 45px
+
+      &:before
+        border 2px solid #82d145
+        background rgba(130,209,69,0.2)
+        color #66b92e
+
+  ul > li
+    position relative
+
+    &:before
+      content ' '
+      display block
+      position absolute
+      left -20px
+      top 10px
+      width 4px
+      height 4px
+      border-radius 100%
+
+  // http://blog.teamtreehouse.com/customize-ordered-lists-pseudo-element
+  ol
+    list-style-type none
+
+    > li
+      counter-increment step-counter
+      position relative
+
+      &:before
+        content counter(step-counter)
+        font-size 14px
+        line-height 14px
+        padding 3px 6px 2px
+        border-radius $r
+        font-family Quicksand
+        font-weight bold
+        position absolute
+        right 100%
+        margin-right 10px
+        top 2px
+        height 15px
+
+      // Give nested lists their own counters up to 5 levels deep
+      ol > li
+        counter-increment nested-step-counter
+        &:before
+          content counter(nested-step-counter)
+        ol > li
+          counter-increment nested-step-counter-2
+          &:before
+            content counter(nested-step-counter-2)
+          ol > li
+            counter-increment nested-step-counter-3
+            &:before
+              content counter(nested-step-counter-3)
+            ol > li
+              counter-increment nested-step-counter-4
+              &:before
+                content counter(nested-step-counter-4)
+              ol > li
+                counter-increment nested-step-counter-5
+                &:before
+                  content counter(nested-step-counter-5)
+
+  table
+    width 100%
+    table-layout fixed
+    border-collapse collapse
+    border 1px solid $border_color
+
+    thead
+      background #f4f4f4
+      font-family Quicksand
+      font-weight bold
+
+    tr
+      border-top 1px solid $border_color
+
+      &:nth-child(2n)
+        background #fcfcfc
+
+    th
+    td
+      padding 6px 13px
+
+  blockquote
+    margin 0 0 30px 0
+    padding 5px 0 1px 20px
+    border-left 5px solid #82d145
+
+    p
+      color #777
+
+  hr
+    background none
+    height 1px
+    border none
+    border-top 1px dashed $border_color
+    margin 30px
+
+  img
+    font-size 0px
+    display block
+    margin 0 auto
+    max-width 100%
+
+/* -------------------------------------------------------------- */
+/* [ SYNTAX HIGHLIGHTING ] */
+/* -------------------------------------------------------------- */
+
+// My modifications to _highlight.styl
+
+.highlight
+  margin 0 0 30px 0
+  font-family 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif
+  border-radius 3px
+  border 1px solid #000
+  overflow hidden
+  font-size 17px
+  line-height 22px
+  box-shadow 0 1px 1px 0 rgba(0,0,0,.25)
+
+  // Override some of the default table styles
+  table
+    width 100%
+    table-layout fixed
+    border none
+    border-collapse inherit
+
+    thead
+      background none
+
+    tr
+      border none
+
+      &:nth-child(2n)
+        background none
+
+    th
+    td
+      padding 0
+
+  .line
+    color $border_color
+
+  .gutter
+    background darken(#2C2C2C, 10%)
+    text-align center
+    border-right 1px solid #111
+    padding 0 5px
+    width 35px
+
+    .line
+      color rgba($border_color, .5)
+      font-size 10px
+      height 20px
+      line-height 15px
+
+  .code
+    background #2C2C2C
+    padding 10px 20px
+    overflow auto
+
+/* -------------------------------------------------------------- */
+/* [ FOOTER ] */
+/* -------------------------------------------------------------- */
+
+footer
+  height 90px
+  background #212121
+  border-top 3px solid #84CF4E
+
+  .logo
+    margin-top -10px
+    width 68px
+    height 75px
+    float right
+
+  .site_nav
+    float right
+    margin-right 30px
+
+    li a
+      padding 15px 10px
+

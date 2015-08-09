@@ -1,0 +1,14 @@
+- var isBlogSelected    = is_home() ? 'selected' : '';
+- var isContactSelected = is_current('Contact') ? 'selected' : '';
+
+header
+  .main_navigation
+    .wrapper
+      a.logo(href='/')
+
+      nav.site_nav
+        ul
+          li(class=isBlogSelected)
+            a(href='/') Blog
+          li(class=isContactSelected)
+            a(href='/Contact') Contact

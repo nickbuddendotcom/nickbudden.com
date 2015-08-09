@@ -1,0 +1,36 @@
+doctype html
+
+html(lang='en')
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    block head_title
+
+    if config.author
+        meta(name='author', content=config.author)
+
+    block head_descriptions
+
+    link(rel='stylesheet', href=config.root + 'styles/main.css')
+    link(rel="icon", href=config.root + 'img/favicon.png')
+    link(rel='canonical', href=url_for(path))
+
+    //- Twitter
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  body
+
+    .outside_sticky_footer
+
+      include header.jade
+
+      main.wrapper(role='main')
+        .content
+          .articles
+            block main
+          include sidebar.jade
+
+    include footer.jade

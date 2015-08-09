@@ -1,0 +1,24 @@
+- var item = post || page;
+
+article
+
+  .post_title
+    h1
+      a(href=url_for(item.path))= item.title
+
+    if item.layout !== 'page'
+      p.date= date(item.date)
+
+    if item.tags && item.tags.length
+      ul.tags
+        - item.tags.each(function(t) {
+            li
+              a(href=url_for(t.path))= t.name
+        - });
+
+  .post_content
+    if !is_home() || !item.excerpt.length
+      != item.content
+    else
+      != item.excerpt
+      a.button.read_more(href=url_for(item.path)) Read More

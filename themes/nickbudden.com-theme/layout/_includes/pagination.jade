@@ -1,0 +1,17 @@
+- var pageNumClass = '';
+- if( page.prev && !page.next ) {
+  - pageNumClass = 'hug_prev';
+- } else if( !page.prev && page.next ) {
+  - pageNumClass = 'hug_next';
+- }
+
+nav.pagination(class=pageNumClass)
+
+  if page.prev
+    a.button.previous_page(href=url_for(page.prev_link))!= '&larr; Prev'
+
+  .page_num
+    = 'Page ' + page.current +  ' of ' + page.total
+
+  if page.next
+    a.button.next_page(href=url_for(page.next_link))!= 'Next &rarr;'
