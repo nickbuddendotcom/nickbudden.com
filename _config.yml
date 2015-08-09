@@ -92,4 +92,3 @@ theme: nickbudden.com-theme
 deploy:
   type: git
   repo: https://github.com/nickbuddendotcom/nickbuddendotcom.github.io.git
-

@@ -19,6 +19,8 @@ article
   .post_content
     if !is_home() || !item.excerpt.length
       != item.content
+      div#disqus_thread
+
     else
       != item.excerpt
       a.button.read_more(href=url_for(item.path)) Read More
