@@ -45,8 +45,8 @@ button
 /* -------------------------------------------------------------- */
 
 webfont('Quicksand', 'quicksand_bold', true, 'normal')
-webfont('PT Sans', 'pt-sans', true, 'normal')
-webfont('PT Sans Bold', 'pt-sans-bold', true, 'normal')
+// webfont('PT Sans', 'pt-sans', true, 'normal')
+// webfont('PT Sans Bold', 'pt-sans-bold', true, 'normal')
 
 /* -------------------------------------------------------------- */
 /* [ COMMON ] */
@@ -59,10 +59,10 @@ body
   height 100%
 
 body
-  font-family 'Pt Sans', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif
+  font-family 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif
   font-smoothing antialiased
   background #F4F4F4
-  font-size 17px
+  font-size 16px
   line-height 180%
   font-weight normal
   color #464646
@@ -151,10 +151,13 @@ h6
   font-size 17px
 
 p
+li
+ol
   a
     color #82D145
     border-bottom 1px dashed $border_color
     transition all 0.3s ease-out
+    font-weight bold
 
     &:hover
       border-bottom 1px solid #82D145
@@ -438,11 +441,15 @@ aside
 .post_content
 
   > *
-    margin-bottom 30px
+    margin-bottom 20px
 
   em
     font-style italic
-    color #000
+    // color #000
+
+  small
+    font-size 12px
+    line-height 12px
 
   strong
     font-weight bold
@@ -643,4 +650,3 @@ footer
 
     li a
       padding 15px 10px
-
